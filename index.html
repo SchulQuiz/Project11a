@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple File Share</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Datei teilen</h1>
+    <input type="file" id="fileInput">
+    <br>
+    <button onclick="addFile()">Hinzufügen</button>
+
+    <div class="file-list" id="fileList"></div>
+</div>
+
+<script>
+    function addFile() {
+        const input = document.getElementById('fileInput');
+        const list = document.getElementById('fileList');
+
+        if (input.files.length > 0) {
+            const fileName = input.files[0].name;
+            const entry = document.createElement('div');
+            entry.textContent = "• " + fileName;
+            list.appendChild(entry);
+        }
+    }
+</script>
+
+</body>
+</html>
